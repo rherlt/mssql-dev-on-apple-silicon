@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mssql:
+    # can be used on any computer with AMD64 CPU (not apple m1)
+    # image: mcr.microsoft.com/mssql/server:2019-latest
+    # can be used on any computer, even apple m1
+    image: mcr.microsoft.com/azure-sql-edge
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_USER=SA
+      - MSSQL_SA_PASSWORD=p4ssw0rd!
+      - MSSQL_PID=Developer
+    ports:
+      - 1433:1433
+    volumes:
+      - ./bak/:/mssql/backup/
+
+  sqlcmd:
+    image: mcr.microsoft.com/mssql-tools:latest
+    platform: linux/amd64 # use this even on arm64 (apple m1)
+    stdin_open: true
+    restart: on-failure:20 # retry some times as it takes a while until mssql server will be available
+    depends_on:
+      - mssql
+    environment:
+      - MSSQL_USER=SA
+      - MSSQL_SA_PASSWORD=p4ssw0rd!
+    volumes:
+       - ./scripts/:/mssql/scripts/
+    command: /bin/bash -c '/opt/mssql-tools/bin/sqlcmd -S mssql -U $$MSSQL_USER -P $$MSSQL_SA_PASSWORD -d master -i /mssql/scripts/restore_backup.sql'
+
+  adminer:
+    image: adminer
+    restart: always
+    depends_on: 
+      - mssql
+    ports:
+      - 8080:8080
