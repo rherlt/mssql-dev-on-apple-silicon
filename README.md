@@ -12,5 +12,5 @@ Boilerplate docker compose file to run a docker image and restore a MSSQL Backup
 2. Get the MSSQL database backup that you want to restore
 3. Put the database backup file to folder [bak](./bak)
 4. Open [restore_backup.sql](./scripts/restore_backup.sql) and adjust the first four arguments acording to your datbase (filename, backup name, etc...)
-5. Run ```docker compose up``` to start everything. See docker compose file for SA user credentials to login. The database will have the name as defined in the variable ```@DB_TARGET_NAME``` in [restore_backup.sql](./scripts/restore_backup.sql) (```myDatabase``` as default)
+5. Run ```docker compose up``` to start everything. See docker compose file for SA user credentials to login. The database will have the name as defined in the variable ```@DB_TARGET_NAME``` in [restore_backup.sql](./scripts/restore_backup.sql)
 6. Run ```docker compose down -v``` to reset everything (and to delete the database)
