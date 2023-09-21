@@ -1,7 +1,7 @@
-DECLARE @DB_BACKUP varchar(max) = N'/mssql/backup/backup.bak'; -- Path to backup file from inside of server container
-DECLARE @DB_LOGICALNAME varchar(max) = N'myDatabase'; -- Logical name of backup to restore (mdf)
-DECLARE @DB_LOGICALNAME_LOG varchar(max) = N'myDatabase_log'; -- Locical name of backup to restore (ldf)
-DECLARE @DB_TARGET_NAME varchar(max) = N'myDatabase'; -- Name of the restored database
+DECLARE @DB_BACKUP varchar(max) = N'/mssql/backup/Northwind.bak'; -- Path to backup file from inside of server container
+DECLARE @DB_LOGICALNAME varchar(max) = N'Northwind'; -- Logical name of backup to restore (mdf)
+DECLARE @DB_LOGICALNAME_LOG varchar(max) = N'Northwind_log'; -- Locical name of backup to restore (ldf)
+DECLARE @DB_TARGET_NAME varchar(max) = N'Northwind'; -- Name of the restored database
 DECLARE @DB_TARGET_MDF varchar(max) = N'/var/opt/mssql/data/' + @DB_TARGET_NAME + N'.mdf'; -- Target path of the mdf file after restore
 DECLARE @DB_TARGET_LDF varchar(max) = N'/var/opt/mssql/data/' + @DB_TARGET_NAME + N'.ldf'; -- Target path of the ldf file after restore
 
