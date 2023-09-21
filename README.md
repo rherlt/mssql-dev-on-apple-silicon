@@ -5,7 +5,7 @@ Boilerplate docker compose file to run a docker image and restore a MSSQL Backup
 1. [Azure SQL Edge](https://hub.docker.com/_/microsoft-azure-sql-edge) as a mac compatible replacement for mssql server.
 2. [sqlcmd from microsoft-mssql-tools](https://hub.docker.com/_/microsoft-mssql-tools) as mssql client command line tool to run mssql scripts.
 3. [adminer](https://hub.docker.com/_/adminer/) as webbased client to display mssql server.
-4. [Northwind](https://github.com/cjlee/northwind) Microsofts sample MSSQL database dor demonstration purposes.
+4. [Northwind](https://github.com/cjlee/northwind) Microsofts sample MSSQL database for demonstration purposes.
 
 # Steps to go:
 1. Get the MSSQL database backup that you want to restore
